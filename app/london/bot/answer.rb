@@ -21,6 +21,11 @@ module London
           ''
         end
       end
+
+      def self.render(*args)
+        @instance ||= self.new
+        @instance.render *args
+      end
     end
   end
 end

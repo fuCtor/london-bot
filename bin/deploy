@@ -1,0 +1,4 @@
+#!/bin/sh
+
+docker tag setlcity_app ajieks/london-bot:lates
+docker push ajieks/london-bot:latest

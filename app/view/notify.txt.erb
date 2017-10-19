@@ -1,0 +1,6 @@
+Статус вашей квартиры изменился:
+
+Квартира №<%= params[:bti_number] %> (секция <%= params[:section] %>, этаж <%= params[:flat] %>)
+Площадь <%= params[:bti_area] %>, по договору <%= params[:area] %>
+<% if params[:completed] %>Поздравляю ваша квартира уже готова!<% end %>
+<%= params[:comment] %>

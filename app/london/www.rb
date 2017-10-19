@@ -1,8 +1,7 @@
 module London
   class Www < Sinatra::Application
     def initialize(*args)
-      @vk = London::Bot::Vk.new(ENV['VK_CODE'])
-      @answer = London::Bot::Answer.new
+      @vk = London::Bot::Vk.client
       super
     end
 
@@ -24,17 +23,18 @@ module London
       text = ''
 
       case msg['object']['body'].downcase
-        when /^квартир. \s*[#№](\d+)$/
+        when /^квартир. \s*[#№]?(\d+)$/
           flat = London::DB::Flat.get_by_number($1)
           text = if flat
-                   @answer.render 'info.txt', flat.values
+                   London::Bot::Answer.render 'info.txt', flat.values
                  else
                    'Не знаю такой квартиры =('
                  end
-        when /^жду квартиру \s*[#№](\d+)$/
+        when /^жду квартиру \s*[#№]?(\d+)$/
           flat = London::DB::Flat.get_by_number($1)
           text = if flat
-                   @answer.render 'subscribed.txt', flat.values
+                   London::DB::Notification.subscribe msg['object']['user_id'].to_i, flat
+                   London::Bot::Answer.render 'subscribed.txt', flat.values
                  else
                    'Не знаю такой квартиры =('
                  end
