@@ -2,3 +2,5 @@
 .enb
 
 ./.bundle
+docker-compose.yaml
+Dockerfile
