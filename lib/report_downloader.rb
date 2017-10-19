@@ -10,6 +10,7 @@ class ReportDownloader
 
   def download(target)
     uri = get_file_uri
+    FileUtils.mkdir_p File.dirname(target)
     Net::HTTP.start(uri.host) do |http|
       resp = http.get(uri.path)
       open(target, "wb") do |file|

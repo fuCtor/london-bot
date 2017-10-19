@@ -1,4 +1,5 @@
 #!/bin/sh
 
-docker tag setlcity_app ajieks/london-bot:lates
+docker rmi ajieks/london-bot:latest
+docker tag setlcity_app ajieks/london-bot:latest
 docker push ajieks/london-bot:latest

@@ -1,4 +1,6 @@
 $stdout.sync = true
+$stderr.sync = true
+
 require 'bundler/setup'
 
 Bundler.require

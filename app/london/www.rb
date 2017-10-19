@@ -16,7 +16,7 @@ module London
     end
 
     def confirmation(msg)
-      'e2c928d2'
+      ENV['VK_CONFIRMATION_CODE'] || 'ok'
     end
 
     def message_new(msg)

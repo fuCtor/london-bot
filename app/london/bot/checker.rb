@@ -9,12 +9,18 @@ module London
         if first_flat
           London::DB::Flat.where(Sequel.lit('id < ?', first_flat.id)).delete
         end
-        London::DB::Flat.where(id: ids).to_a
+        London::DB::Flat.where(id: ids).to_a.tap do |a|
+          puts "Flat complete #{a.size}"
+        end
       end
 
       def self.check
         flats.each do |flat|
-          London::DB::Notification.where(number: flat.number)
+          notifications = London::DB::Notification.where(number: flat.number, complete: false)
+          notifications.each do |n|
+            notify n.user_id, n.number
+            n.notified
+          end
         end
       end
 
