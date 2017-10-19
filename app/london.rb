@@ -1,5 +1,6 @@
 module London
   autoload :Www, 'london/www'
+  autoload :Scheduler, 'london/scheduler'
 
   module DB
     autoload :Flat, 'london/db/flat'
