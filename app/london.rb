@@ -7,6 +7,7 @@ module London
   end
 
   module Bot
-    autoload :Flat, 'london/bot/vk'
+    autoload :Vk, 'london/bot/vk'
+    autoload :Answer, 'london/bot/answer'
   end
 end

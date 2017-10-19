@@ -16,3 +16,13 @@ gem 'sqlite3'
 
 gem 'rufus-scheduler'
 gem 'sucker_punch', '~> 2.0'
+
+gem 'vkontakte_api', '~> 1.4'
+gem 'thin'
+gem 'sinatra'
+gem 'oj'
+
+group :development do
+  gem 'shotgun'
+  gem 'awesome_print'
+end

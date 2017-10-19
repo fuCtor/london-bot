@@ -10,6 +10,10 @@ module London
         end
       end
 
+      def self.get_by_number(num)
+        where(number: num).first
+      end
+
       def diff
         (bti_area - area).round(2)
       end

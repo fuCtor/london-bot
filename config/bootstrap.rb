@@ -17,3 +17,7 @@ DB_CONN = Sequel.connect(ENV['DATABASE_URL'])
 Dir[File.join(ROOT, 'lib', '*.rb')].each do |fn|
   require fn
 end
+
+Dir[File.join(ROOT, 'config', 'initializer', '*.rb')].to_a.sort.each do |fn|
+  require fn
+end
